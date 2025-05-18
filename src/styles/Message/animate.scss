@@ -1,0 +1,43 @@
+@mixin messageAnimate {
+  &-top-enter-active {
+    transition: all .25s ease-in;
+  }
+
+  &-top-leave-active {
+    transition: all .25s ease-out;
+  }
+
+  &-top-enter-from,
+  &-top-leave-to {
+    opacity: 0;
+    transform: translateY(-100%) translateX(-50%);
+  }
+
+  &-top-enter-to,
+  &-top-leave-from {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+
+  // ---------------------------------------------------------- //
+
+  &-bottom-enter-active {
+    transition: all .25s ease-in;
+  }
+
+  &-bottom-leave-active {
+    transition: all .25s ease-out;
+  }
+
+  &-bottom-enter-from,
+  &-bottom-leave-to {
+    opacity: 0;
+    transform: translateY(100%) translateX(-50%);
+  }
+
+  &-bottom-enter-to,
+  &-bottom-leave-from {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}

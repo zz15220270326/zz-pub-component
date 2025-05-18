@@ -1,0 +1,22 @@
+.counter {
+
+  .btn {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    color: #333;
+    padding: 6px 8px;
+    box-sizing: border-box;
+    box-shadow: 0 0 2px #ccc;
+    border-radius: 1px;
+    transition: all .25s ease-in;
+
+    &:hover,
+    &:visited {
+      opacity: .6;
+      color: #3695dd;
+      box-shadow: 0 0 3px #0399fc;
+    }
+  }
+}

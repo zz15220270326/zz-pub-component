@@ -1,0 +1,27 @@
+{
+  "name": "zz-pub-component",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.28",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
+    "@vue/babel-preset-jsx": "^1.4.0",
+    "sass": "^1.72.0",
+    "typescript": "4.x",
+    "vite": "^5.1.6",
+    "vue": "^3.4.21"
+  },
+  "peerDependencies": {
+    "vue": "^3.3"
+  }
+}

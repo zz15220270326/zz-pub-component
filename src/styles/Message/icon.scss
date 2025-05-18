@@ -1,0 +1,41 @@
+@import "./variable.scss";
+
+@mixin messageIcon {
+  &-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    line-height: 1;
+    width: 15px;
+    height: 15px;
+    font-size: 15px;
+
+    &-success {
+      color: $my-message-success-icon-color;
+    }
+
+    &-warning {
+      color: $my-message-warning-icon-color;
+    }
+
+    &-error {
+      color: $my-message-error-icon-color;
+    }
+
+    &-info {
+      color: $my-message-info-icon-color;
+    }
+  }
+
+  &-type-icon {
+    left: 0;
+    margin-left: 5px;
+  }
+
+  &-close-icon {
+    right: 0;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+}
