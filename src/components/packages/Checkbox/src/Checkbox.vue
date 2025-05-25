@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { onMounted, ref, watch } from 'vue';
+  import { watchEffect, ref, watch } from 'vue';
   import * as constant from '../modules/constant';
   import CheckboxLabel from './Sub/CheckboxLabel.vue';
 
@@ -13,21 +13,27 @@
     emit('update:modelValue', newValue);
   });
 
-  onMounted(() => {
+  watchEffect(() => {
     checkedValue.value = !!props.modelValue;
   });
 
   function handleCheckboxChange(e: Event) {
+    if (props.disabled) {
+      return;
+    }
+
     const el = e.target || e.srcElement;
 
     if (el instanceof HTMLSpanElement) {
       checkedValue.value = !checkedValue.value;
+      emit('change', checkedValue.value);
       return;
     }
 
     if (!(el instanceof HTMLInputElement)) return;
 
     checkedValue.value = el.checked;
+    emit('change', el.checked);
   }
 </script>
 
@@ -36,6 +42,7 @@
     <checkbox-label
       v-if="props.labelPosition === 'left'"
       :label="props.label"
+      :disabled="props.disabled"
       :checked="checkedValue"
     />
     <input
@@ -49,12 +56,16 @@
     <span
       :class="[
         'my-checkbox__icon',
-        checkedValue ? 'my-checkbox__icon-checked' : ''
+        checkedValue ? 'my-checkbox__icon-checked' : '',
+        !checkedValue && props.indeterminate
+          ? 'my-checkbox__icon-indeterminate'
+          : '',
       ]"
     />
     <checkbox-label
       v-if="props.labelPosition === 'right'"
       :label="props.label"
+      :disabled="props.disabled"
       :checked="checkedValue"
     />
   </span>

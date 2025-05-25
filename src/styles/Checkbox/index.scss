@@ -35,6 +35,22 @@
       }
     }
 
+    &:indeterminate + .my-checkbox__icon {
+      border-color: #007bff;
+      background-color: #007bff;
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 2px;
+        background-color: white;
+        transform: translate(-50%, -50%);
+      }
+    }
+
     &:disabled + .my-checkbox__icon {
       cursor: not-allowed;
       border-color: #ccc;
@@ -44,6 +60,7 @@
 
   &__icon {
     position: relative;
+    top: 1.5px;
     display: inline-block;
     text-align: center;
     width: 14px; // 减小图标尺寸
@@ -79,6 +96,15 @@
 
     &-checked {
       color: #007bff;
+    }
+
+    &-disabled {
+      color: #ccc;
+      cursor: not-allowed;
+
+      &:hover {
+        color: #dedede;
+      }
     }
   }
 }

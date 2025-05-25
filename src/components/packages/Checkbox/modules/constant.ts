@@ -38,6 +38,6 @@ export const props = {
 export const emits = {
   'update:modelValue': (value: string | number | boolean) =>
     ['string', 'number', 'boolean'].includes(typeof value),
-  'change': (value: string | number | boolean) =>
-    ['string', 'number', 'boolean'].includes(typeof value),
+  'change': (value: boolean) =>
+    ['boolean'].includes(typeof value),
 };

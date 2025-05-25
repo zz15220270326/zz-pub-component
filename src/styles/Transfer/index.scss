@@ -1,0 +1,126 @@
+.my-transfer {
+  display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+
+  .my-transfer-box {
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+
+    &-nav {
+      &-title {
+        display: inline-block;
+        height: 100%;
+        line-height: 1;
+        padding-left: 5px;
+        box-sizing: border-box;
+      }
+
+      &-stats {
+        display: inline-block;
+        height: 100%;
+        line-height: 1;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 5px;
+      }
+    }
+
+    &-search {
+      height: 40px;
+      padding: 8px 8px 8px 5px;
+      border-bottom: 1px solid #ccc;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+
+      input {
+        flex: 1;
+        padding: 4px;
+        outline: none;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        transition: border-color 0.2s ease-in-out;
+
+        &:hover,
+        &:focus {
+          border-color: #409eff;
+        }
+      }
+
+      .iconfont {
+        margin-left: 8px;
+        cursor: pointer;
+      }
+    }
+
+    &-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      height: 200px;
+      max-height: 500px;
+      overflow-y: auto;
+
+      &-item {
+        padding: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #f0f0f0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #f5f5f5;
+        }
+
+        .iconfont {
+          margin-left: 8px;
+        }
+      }
+    }
+
+    // 优化 box 的滚动条
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: #ccc;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f0f0f0;
+    }
+  }
+
+  .my-transfer-ctrl {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &-btn {
+      margin: 8px 0;
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      cursor: pointer;
+
+      &-disabled {
+        opacity: .75;
+        cursor: not-allowed;
+      }
+
+      &:hover {
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
