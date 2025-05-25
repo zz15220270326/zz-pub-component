@@ -7,10 +7,10 @@
 
   defineOptions({ name: 'TransferDemo' });
 
-  const data: TransferItem[] = Array.from({ length: 100 }).map((_, i) => ({
+  const data: TransferItem[] = Array.from({ length: 200 }).map((_, i) => ({
     key: `${i + 1}`,
     label: `content-${i + 1}`,
-    disabled: i % 5 === 0,
+    disabled: i % 6 === 0,
   }));
 
   const selectedKeys = ref(

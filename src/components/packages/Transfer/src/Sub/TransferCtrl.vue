@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import {} from 'vue';
   import { TransferDirectionType } from '../../types';
+  import { RightArrowIcon, LeftArrowIcon } from '../../../Icon';
 
   interface TransferCtrlProps {
     disabled: boolean;
@@ -34,7 +34,7 @@
       :disabled="props.leftButtonDisabled || props.disabled"
       @click="handleSwitchButtonClick('right')"
     >
-      >
+      <right-arrow-icon class="transfer-button-icon" />
     </button>
     <button
       :class="[
@@ -45,7 +45,7 @@
       :disabled="props.rightButtonDisabled || props.disabled"
       @click="handleSwitchButtonClick('left')"
     >
-      <
+      <left-arrow-icon class="transfer-button-icon" />
     </button>
   </div>
 </template>

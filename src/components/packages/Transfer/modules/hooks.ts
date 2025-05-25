@@ -128,7 +128,8 @@ export function useCheckedValueController({
 
   const checkedAllValue = computed(() => {
     if (!data.value.length || !checkedValue.value.length) return false;
-    return data.value.filter(item => !item.disabled).length <= checkedValue.value.length;
+    // return data.value.filter(item => !item.disabled).length <= checkedValue.value.length;
+    return data.value.every(item => checkedValue.value.includes(item.key));
   })
 
   const clearCheckedValue = () => {

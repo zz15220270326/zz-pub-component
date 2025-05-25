@@ -7,6 +7,11 @@ export interface TransferItem {
   disabled?: boolean;
 }
 
+export interface TransferGroupItem {
+  label: string;
+  children: TransferItem[];
+}
+
 export type TransferDirectionType = 'left' | 'right';
 
 export type TransferProps = ExtractPropTypes<typeof transferProps>;

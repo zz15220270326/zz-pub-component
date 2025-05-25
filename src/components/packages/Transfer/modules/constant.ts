@@ -1,5 +1,9 @@
 import { PropType } from 'vue';
-import { TransferItem } from '../types';
+import {
+  TransferItem,
+  TransferDirectionType,
+  TransferCheckAllType,
+} from '../types';
 
 export const transferProps = {
   /**
@@ -54,8 +58,26 @@ export const transferProps = {
 } as const;
 
 export const transferEmits = {
+  /**
+   * @description 数据变化时触发
+  */
   'update:modelValue': (value: (string | number)[]) =>
     typeof value === 'string' || Array.isArray(value),
   change: (value: (string | number)[]) =>
     typeof value === 'string' || Array.isArray(value),
+} as const;
+
+export const transfrerBoxEmits = {
+  change: (
+    direction: TransferDirectionType,
+    value: boolean,
+    item: TransferItem
+  ) => (
+    typeof direction === 'string'
+      && typeof value === 'boolean'
+      && typeof item === 'object' && item !== null
+  ),
+  'change-search-value': (newValue: string, direction: TransferDirectionType) =>
+    typeof newValue === 'string' && typeof direction === 'string',
+  'checked-all-change': (field: TransferCheckAllType) => typeof field === 'string',
 } as const;

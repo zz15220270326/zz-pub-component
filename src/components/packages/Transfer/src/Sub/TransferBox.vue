@@ -4,11 +4,14 @@
   import MyInput from '../../../Input/src/Input.vue';
   import MyCheckbox from '../../../Checkbox/src/Checkbox.vue';
 
+  import { transfrerBoxEmits } from '../../modules/constant';
   import {
     TransferCheckAllType,
     TransferDirectionType,
     TransferItem,
   } from '../../types';
+
+  import MyTransferEmpty from './TransferEmpty.vue';
 
   const ns = 'my-transfer-box';
 
@@ -53,15 +56,13 @@
     }
   });
 
-  const emit = defineEmits({
-    change: (
-      direction: TransferDirectionType,
-      value: boolean,
-      item: TransferItem
-    ) => true,
-    'change-search-value': (newValue: string, direction: TransferDirectionType) =>
-      typeof newValue === 'string' && typeof direction === 'string',
-    'checked-all-change': (field: TransferCheckAllType) => typeof field === 'string',
+  const emit = defineEmits(transfrerBoxEmits);
+
+  const indeterminate = computed(() => {
+    if (props.checkedValue.length && !props.checkedAllValue) {
+      return true;
+    }
+    return false;
   });
 
   function handleValueChange(
@@ -95,7 +96,7 @@
           :disabled="props.disabled"
           :label="navTitle"
           :model-value="props.checkedAllValue"
-          :indeterminate="checkedValue.length > 0 && !props.checkedAllValue"
+          :indeterminate="indeterminate"
           @change="handleCheckedAllValueChange"
         />
         <span :class="`${ns}-nav-stats`">
@@ -120,7 +121,7 @@
       </div>
     </div>
     <div v-if="!showData.length" style="height: 200px; text-align: center; padding: 20px; box-sizing: border-box;">
-      ----- NO DATA -----
+      <my-transfer-empty />
     </div>
     <template v-else>
       <ul :class="`${ns}-list`">
@@ -133,7 +134,10 @@
           <my-checkbox
             :disabled="item.disabled || props.disabled"
             :label="item.label"
-            :model-value="checkedValue.includes(item.key)"
+            :model-value="
+              checkedValue.includes(item.key)
+              || props.direction === 'right' && item.disabled
+            "
             @change="value => handleValueChange(props.direction, value, item)"
           />
           <i class="iconfont icon-right" />
