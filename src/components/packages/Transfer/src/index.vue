@@ -72,7 +72,12 @@
       case 'right':
         {
           // 添加元素
-          const addKeys: (string | number)[] = leftCheckedController.checkedValue.value;
+          const addKeys: (string | number)[] = (
+            leftCheckedController.checkedValue.value
+              .filter(
+                key => !transferData.value.find(item => item.key === key)?.disabled
+              )
+          );
           const selectedKeysValue = selectedKeys.value;
           addElementToArray(selectedKeysValue, addKeys);
           selectedKeys.value = selectedKeysValue;
@@ -82,7 +87,12 @@
       case 'left':
         {
           // 删除元素
-          const removeKeys: (string | number)[] = rightCheckedController.checkedValue.value;
+          const removeKeys: (string | number)[] = (
+            rightCheckedController.checkedValue.value
+              .filter(
+                key => !transferData.value.find(item => item.key === key)?.disabled
+              )
+          );
           let selectedKeysValue = selectedKeys.value;
           selectedKeysValue = removeElementFromArray(selectedKeysValue, removeKeys);
           selectedKeys.value = selectedKeysValue;
